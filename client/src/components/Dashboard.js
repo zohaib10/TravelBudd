@@ -1,15 +1,50 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+// import AddIcon from '@material-ui/icons/Add';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing.unit
+  }
+});
+
+function FloatingActionButtons(props) {
+  const { classes } = props;
+  return (
+    <div>
+      <Button
+        variant="fab"
+        color="primary"
+        aria-label="add"
+        className={classes.button}
+      >
+        +
+      </Button>
+    </div>
+  );
+}
+
+FloatingActionButtons.propTypes = {
+  classes: PropTypes.object.isRequired
+};
 
 class Dashboard extends Component {
   mapListItems() {
-    if (this.props.initialState != undefined) {
+    if (this.props.initialState !== undefined) {
       return this.props.initialState.map(item => {
         return (
-          <a href={item.id} className="collection-item">
+          <Link
+            to={{
+              pathname: '/trip/' + item.id
+            }}
+            className="collection-item"
+          >
             {item.address}
-          </a>
+          </Link>
         );
       });
     }
@@ -34,23 +69,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = state => {
+  console.log('state changed: ', state);
   return { initialState: state };
 };
 
-export default connect(mapStateToProps)(Dashboard);
+// export default withStyles(styles)(FloatingActionButtons);
 
-/*
-
-<a href="#!" className="collection-item">
-  Venice, Italy
-</a>
-<a href="#!" className="collection-item">
-  Valletta, Malta
-</a>
-<a href="#!" className="collection-item">
-  Nice, France
-</a>
-<a href="#!" className="collection-item">
-  Durban, South Africa
-</a>
-*/
+export default connect(mapStateToProps)(withStyles(styles)(Dashboard));

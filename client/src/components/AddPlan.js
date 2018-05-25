@@ -12,7 +12,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import 'react-datepicker/dist/react-datepicker.css';
 
-class AddPlan extends React.Component {
+class AddPlan extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -121,6 +121,10 @@ class AddPlan extends React.Component {
               />
             </label>
           </div>
+
+          <Link to="/" className="left waves-effect btn green lighten-1">
+            Cancel
+          </Link>
 
           <Link
             to="/"

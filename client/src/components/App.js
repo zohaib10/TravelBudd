@@ -4,7 +4,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 // route "/AddPlan"
 import Header from './Header';
 // "/"
-// import Landing from './Landing';
+import Landing from './Landing';
 // "/dashboard"
 import Dashboard from './Dashboard';
 // "/AddPlan"
@@ -20,6 +20,7 @@ const App = () => {
           <Route path="/" component={Header} />
           <Route exact path="/" component={Dashboard} />
           <Route exact path="/plan/add" component={AddPlan} />
+          <Route path="/trip" component={Landing} />
         </div>
       </BrowserRouter>
     </div>
