@@ -13,6 +13,25 @@ class Landing extends React.Component {
     expanded: null
   };
 
+  handleExpand(e) {
+    console.log('Hi');
+
+    // var coll = document.getElementsByClassName('collapsible');
+    // var i;
+    //
+    // for (i = 0; i < coll.length; i++) {
+    //   coll[i].addEventListener('click', function() {
+    //     this.classList.toggle('active');
+    //     var content = this.nextElementSibling;
+    //     if (content.style.maxHeight) {
+    //       content.style.maxHeight = null;
+    //     } else {
+    //       content.style.maxHeight = content.scrollHeight + 'px';
+    //     }
+    //   });
+    // }
+  }
+
   handleChange = panel => (event, expanded) => {
     this.setState({
       expanded: expanded ? panel : false
@@ -43,86 +62,48 @@ class Landing extends React.Component {
     return add;
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
+
   render() {
     const { expanded } = this.state;
     return (
       <div className="page-container">
         <div className="product-listing1">
-          <ExpansionPanel className="E1" onChange={this.handleChange('panel1')}>
-            <ExpansionPanelSummary>
-              <Typography>Transportation</Typography>
-              <Typography className="TP">
-                <b>: $800</b>
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                <Button
-                  variant="fab"
-                  right="true"
-                  mini
-                  color="secondary"
-                  aria-label="add"
-                >
-                  <AddIcon onChnage={this.transpotationAdd()} />
-                </Button>
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-            expanded={expanded === 'panel2'}
-            onChange={this.handleChange('panel2')}
-          >
-            <ExpansionPanelSummary>
-              <Typography>Accomodations</Typography>
-              <Typography>
-                <b>: $800</b>
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Donec placerat, lectus sed mattis semper, neque lectus feugiat
-                lectus, varius pulvinar diam eros in elit. Pellentesque
-                convallis laoreet laoreet.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-            expanded={expanded === 'panel3'}
-            onChange={this.handleChange('panel3')}
-          >
-            <ExpansionPanelSummary>
-              <Typography>Food & Drink</Typography>
-              <Typography>
-                <b>: $800</b>
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-                augue.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
-          <ExpansionPanel
-            expanded={expanded === 'panel4'}
-            onChange={this.handleChange('panel4')}
-          >
-            <ExpansionPanelSummary>
-              <Typography>Activities</Typography>
-              <Typography>
-                <b>: $800</b>
-              </Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <Typography>
-                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
-                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
-                augue.
-              </Typography>
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
+          <a href="#" onClick={this.handleClick}>
+            Click me
+          </a>
+          <a href="#" onClick={this.handleExpand()}>
+            <button className="collapsible">Open Section 1</button>
+          </a>
+          <div className="content">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+          <button className="collapsible">Open Section 2</button>
+          <div className="content">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
+          <button className="collapsible">Open Section 3</button>
+          <div className="content">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </p>
+          </div>
         </div>
 
         <div className="product-listing2">
