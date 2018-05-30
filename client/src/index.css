@@ -1,0 +1,28 @@
+.page-container {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap-reverse;
+  flex-direction: row;
+  padding: 10px;
+}
+
+.product-listing1 {
+  padding: 10px 30px;
+  width: 900px;
+}
+.product-listing2 {
+  padding: 10px 30px;
+  width: 400px;
+}
+
+.Paper1 {
+  padding: 15px;
+}
+.material-icons:hover {
+  color: green;
+  cursor: pointer;
+}
+
+.E1 {
+  align-content: center;
+}

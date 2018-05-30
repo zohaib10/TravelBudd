@@ -1,26 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import Typography from '@material-ui/core/Typography';
-
-const styles = theme => ({
-  root: {
-    width: '100%',
-    padding: 50
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    flexBasis: '33.33%',
-    flexShrink: 0
-  },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary
-  }
-});
+import Paper from '@material-ui/core/Paper';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
+import { connect } from 'react-redux';
 
 class Landing extends React.Component {
   state = {
@@ -33,89 +19,156 @@ class Landing extends React.Component {
     });
   };
 
-  render() {
-    const { classes } = this.props;
-    const { expanded } = this.state;
+  transpotationAdd() {
+    console.log('hi');
+  }
 
+  handleTotalBudget() {
+    var bud = 0;
+    this.props.initialState.map(item => {
+      if (item.id == this.props.location.pathname.split('/')[2]) {
+        bud = item.budget;
+      }
+    });
+    return bud;
+  }
+
+  handleLocation() {
+    var add = 'Hawaii';
+    this.props.initialState.map(item => {
+      if (item.id == this.props.location.pathname.split('/')[2]) {
+        add = item.address;
+      }
+    });
+    return add;
+  }
+
+  render() {
+    const { expanded } = this.state;
     return (
-      <div className={classes.root}>
-        <ExpansionPanel
-          expanded={expanded === 'panel1'}
-          onChange={this.handleChange('panel1')}
-        >
-          <ExpansionPanelSummary>
-            <Typography className={classes.heading}>
-              General settings
+      <div className="page-container">
+        <div className="product-listing1">
+          <ExpansionPanel className="E1" onChange={this.handleChange('panel1')}>
+            <ExpansionPanelSummary>
+              <Typography>Transportation</Typography>
+              <Typography className="TP">
+                <b>: $800</b>
+              </Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography>
+                <Button
+                  variant="fab"
+                  right="true"
+                  mini
+                  color="secondary"
+                  aria-label="add"
+                >
+                  <AddIcon onChnage={this.transpotationAdd()} />
+                </Button>
+              </Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <ExpansionPanel
+            expanded={expanded === 'panel2'}
+            onChange={this.handleChange('panel2')}
+          >
+            <ExpansionPanelSummary>
+              <Typography>Accomodations</Typography>
+              <Typography>
+                <b>: $800</b>
+              </Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography>
+                Donec placerat, lectus sed mattis semper, neque lectus feugiat
+                lectus, varius pulvinar diam eros in elit. Pellentesque
+                convallis laoreet laoreet.
+              </Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <ExpansionPanel
+            expanded={expanded === 'panel3'}
+            onChange={this.handleChange('panel3')}
+          >
+            <ExpansionPanelSummary>
+              <Typography>Food & Drink</Typography>
+              <Typography>
+                <b>: $800</b>
+              </Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography>
+                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
+                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
+                augue.
+              </Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+          <ExpansionPanel
+            expanded={expanded === 'panel4'}
+            onChange={this.handleChange('panel4')}
+          >
+            <ExpansionPanelSummary>
+              <Typography>Activities</Typography>
+              <Typography>
+                <b>: $800</b>
+              </Typography>
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <Typography>
+                Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
+                Integer sit amet egestas eros, vitae egestas augue. Duis vel est
+                augue.
+              </Typography>
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
+        </div>
+
+        <div className="product-listing2">
+          <Paper className="Paper1" elevation={4}>
+            <br />
+            <Typography variant="headline" component="h1">
+              {this.handleLocation()}
             </Typography>
-            <Typography className={classes.secondaryHeading}>
-              I am an expansion panel
+            <br />
+            <Typography className="budget-listing" component="p">
+              Total Budget: <b>${this.handleTotalBudget()}</b>
             </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Nulla facilisi. Phasellus sollicitudin nulla et quam mattis
-              feugiat. Aliquam eget maximus est, id dignissim quam.
+            <br />
+            <Typography className="budget-listing" component="p">
+              Total Expenses: <b>$3000</b>
             </Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel
-          expanded={expanded === 'panel2'}
-          onChange={this.handleChange('panel2')}
-        >
-          <ExpansionPanelSummary>
-            <Typography className={classes.heading}>Users</Typography>
-            <Typography className={classes.secondaryHeading}>
-              You are currently not an owner
+            <br />
+            <Typography className="budget-listing" component="p">
+              Total Left to spend: <b>$3000</b>
             </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Donec placerat, lectus sed mattis semper, neque lectus feugiat
-              lectus, varius pulvinar diam eros in elit. Pellentesque convallis
-              laoreet laoreet.
-            </Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel
-          expanded={expanded === 'panel3'}
-          onChange={this.handleChange('panel3')}
-        >
-          <ExpansionPanelSummary>
-            <Typography className={classes.heading}>
-              Advanced settings
-            </Typography>
-            <Typography className={classes.secondaryHeading}>
-              Filtering has been entirely disabled for whole web server
-            </Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-              sit amet egestas eros, vitae egestas augue. Duis vel est augue.
-            </Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
-        <ExpansionPanel
-          expanded={expanded === 'panel4'}
-          onChange={this.handleChange('panel4')}
-        >
-          <ExpansionPanelSummary>
-            <Typography className={classes.heading}>Personal data</Typography>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
-            <Typography>
-              Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer
-              sit amet egestas eros, vitae egestas augue. Duis vel est augue.
-            </Typography>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+            <br />
+            <ExpansionPanel
+              expanded={expanded === 'panel10'}
+              onChange={this.handleChange('panel10')}
+            >
+              <ExpansionPanelSummary>
+                <Typography>Currency Exchange Rate</Typography>
+              </ExpansionPanelSummary>
+              <ExpansionPanelDetails>
+                <Typography>
+                  Nunc vitae orci ultricies, auctor nunc in, volutpat nisl.
+                  Integer sit amet egestas eros, vitae egestas augue. Duis vel
+                  est augue.
+                </Typography>
+              </ExpansionPanelDetails>
+            </ExpansionPanel>
+          </Paper>
+        </div>
       </div>
     );
   }
 }
 
-Landing.propTypes = {
-  classes: PropTypes.object.isRequired
+const mapStateToProps = state => {
+  console.log('state changed Landing: ', state);
+  return { initialState: state };
 };
 
-export default withStyles(styles)(Landing);
+export default connect(mapStateToProps)(Landing);

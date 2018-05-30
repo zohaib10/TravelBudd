@@ -19,7 +19,8 @@ class AddPlan extends Component {
       startDate: moment(),
       endDate: moment(),
       address: '',
-      id: ''
+      id: '',
+      budget: ''
     };
 
     this.handleStartChange = this.handleStartChange.bind(this);
@@ -31,6 +32,10 @@ class AddPlan extends Component {
       startDate: date
     });
   }
+
+  handleBudgetChange = budget => {
+    this.setState({ budget: budget.target.value });
+  };
 
   handleEndChange(date) {
     this.setState({
@@ -64,7 +69,7 @@ class AddPlan extends Component {
         <br />
         <form>
           <div className="row">
-            <label className="col s12 ">
+            <label className="col s6 ">
               Where:
               <PlacesAutocomplete
                 value={this.state.address}
@@ -103,6 +108,16 @@ class AddPlan extends Component {
                   </div>
                 )}
               </PlacesAutocomplete>
+            </label>
+
+            <label className="col s6 fixed">
+              Budget:
+              <input
+                placeholder="In Dollars"
+                id="budget"
+                className="validate"
+                onChange={this.handleBudgetChange}
+              />
             </label>
           </div>
           <div className="row ">
