@@ -6,7 +6,7 @@ import AddIcon from '@material-ui/icons/Add';
 
 class Dashboard extends Component {
   mapListItems() {
-    if (this.props.initialState !== undefined) {
+    if (this.props.initialState.length !== 0) {
       return this.props.initialState.map(item => {
         return (
           <div>
@@ -21,6 +21,33 @@ class Dashboard extends Component {
           </div>
         );
       });
+    }
+    else{
+      return (
+        <div>
+          <h2>Welcome to TravelBudd!</h2>
+          <br/>
+          <br/>
+          <div class="explainFeatures">
+            <div class="img-with-text">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1HKkqYhof3jMwXJvmgglpuYkBp4nzn6H4rahcNiFPgCpFFqNA" height="200" />
+              <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, dolor quis imperdiet consectetur, leo.</h5>
+            </div>
+            <div class="img-with-text">
+              <img src="https://cmkt-image-prd.global.ssl.fastly.net/0.1.0/ps/1434727/1160/772/m1/fpnw/wm0/money-bag-icon-flat-01-.jpg?1467978237&s=449288bbf1e0dfb5c584b17d46b302a3" height="200" />
+              <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, dolor quis imperdiet consectetur, leo.</h5>
+            </div>
+            <div class="img-with-text">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1HKkqYhof3jMwXJvmgglpuYkBp4nzn6H4rahcNiFPgCpFFqNA" height="200" />
+              <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, dolor quis imperdiet consectetur, leo.</h5>
+            </div>
+          </div>
+          <br/>
+          <h5 align="center">
+            To get started, click <Link to="plan/add"><a>here</a></Link> or the red button on the bottom right corner.
+          </h5>
+        </div>
+      );
     }
     return;
   }
