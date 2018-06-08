@@ -38,7 +38,7 @@ class Dashboard extends Component {
               <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, dolor quis imperdiet consectetur, leo.</h5>
             </div>
             <div class="img-with-text">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1HKkqYhof3jMwXJvmgglpuYkBp4nzn6H4rahcNiFPgCpFFqNA" height="200" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO7uvxeeeC93RHFMqFE6aIfOiJvMBUi8zZXk2BkwiUiScfYdZT" height="200" />
               <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec commodo, dolor quis imperdiet consectetur, leo.</h5>
             </div>
           </div>
