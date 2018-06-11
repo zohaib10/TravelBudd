@@ -5,7 +5,7 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper green lighten-1">
+        <div className="header nav-wrapper lighten-2">
           <Link to="/" className="brand-logo center">
             TravelBudd
           </Link>

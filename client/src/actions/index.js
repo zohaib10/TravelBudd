@@ -1,9 +1,22 @@
-import { ADD_PLAN } from './types';
+import { ADD_PLAN, UPDATE_TASK, NEW_CATEGORY } from './types';
 
 export const addPlace = data => {
-  console.log('made it to action', data);
   return {
     type: ADD_PLAN,
+    payload: data
+  };
+};
+
+export const updateTasks = data => {
+  return {
+    type: UPDATE_TASK,
+    payload: data
+  };
+};
+
+export const addNewCategory = data => {
+  return {
+    type: NEW_CATEGORY,
     payload: data
   };
 };

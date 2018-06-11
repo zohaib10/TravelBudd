@@ -15,12 +15,35 @@ import 'react-datepicker/dist/react-datepicker.css';
 class AddPlan extends Component {
   constructor(props) {
     super(props);
+    var catObj = [];
+    catObj.push({
+      name: 'Transportation',
+      tasks: [],
+      totalPrice: 0
+    });
+    catObj.push({
+      name: 'Accomodations',
+      tasks: [],
+      totalPrice: 0
+    });
+    catObj.push({
+      name: 'FoodDrinks',
+      tasks: [],
+      totalPrice: 0
+    });
+    catObj.push({
+      name: 'Activities',
+      tasks: [],
+      totalPrice: 0
+    });
+
     this.state = {
       startDate: moment(),
       endDate: moment(),
       address: '',
       id: '',
-      budget: ''
+      budget: '',
+      categories: catObj
     };
 
     this.handleStartChange = this.handleStartChange.bind(this);
@@ -65,7 +88,7 @@ class AddPlan extends Component {
     return (
       <div className="container">
         <br />
-        <h5 className="green lighten-5">Start Planning on Travelbudd</h5>
+        <h5>Start Planning on Travelbudd</h5>
         <br />
         <form>
           <div className="row">
@@ -137,13 +160,13 @@ class AddPlan extends Component {
             </label>
           </div>
 
-          <Link to="/" className="left waves-effect btn green lighten-1">
+          <Link to="/" className="left waves-effect btn red lighten-1">
             Cancel
           </Link>
 
           <Link
             to="/"
-            className="right waves-effect btn green lighten-1"
+            className="right waves-effect btn red lighten-1"
             onClick={() => this.props.addPlace(this.state)}
           >
             Plan
