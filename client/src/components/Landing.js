@@ -290,15 +290,15 @@ class Landing extends React.Component {
             </Typography>
             <br />
             <Typography className="budget-listing" component="p">
-              Total Budget: <b>${this.handleTotalBudget()}</b>
+              Total Budget: <b class="budget">${this.handleTotalBudget()}</b>
             </Typography>
             <br />
             <Typography className="budget-listing" component="p">
-              Total Expenses: <b>${this.handleTotalExpenses()}</b>
+              Total Expenses: <b class="expenses">${this.handleTotalExpenses()}</b>
             </Typography>
             <br />
             <Typography className="budget-listing" component="p">
-              Total Left to spend: <b>${this.handleTotalLeft()}</b>
+              Total Left to spend: <b class="posLeftover">${this.handleTotalLeft()}</b>
             </Typography>
             <br />
             <ExpansionPanel
